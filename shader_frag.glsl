@@ -1,21 +1,33 @@
-char *fragmentShaderCode = R"(
+char mobiusFragmentShaderCode[] = R"(
+
+varying vec2 vTextureCoord;
+uniform sampler2D inputTexture;
+uniform vec2 uTextureOffset;
+uniform float uIsInverted;
+
+void main(void) {
+    //				gl_FragColor = vec4(1.0, 1.0, 1.0, 1);
+    gl_FragColor = texture2D(inputTexture, vec2(vTextureCoord.s, vTextureCoord.t) - uTextureOffset);
+    if (uIsInverted != 0.0) {
+        gl_FragColor = vec4(
+                            (1.0 - gl_FragColor.x) * uIsInverted + gl_FragColor.x * (1.0 - uIsInverted),
+                            (1.0 - gl_FragColor.y) * uIsInverted + gl_FragColor.y * (1.0 - uIsInverted),
+                            (1.0 - gl_FragColor.z) * uIsInverted + gl_FragColor.z * (1.0 - uIsInverted),
+                            1) ;
+    }
+}
+
+)";
+
+char basicFragmentShaderCode[] = R"(
 
 uniform sampler2D inputTexture;
-uniform sampler1D heatTexture;
-uniform vec2 maxCoords;
-uniform float heatAmount;
-const vec4 grayScaleWeights = vec4(0.30, 0.59, 0.11, 0.0);
+varying vec2 vTextureCoord;
+uniform vec2 uTextureOffset;
 
-void main()
-{
-    vec2 texCoord = gl_TexCoord[1].st; //lookup input color
-    vec4 c = texture2D(inputTexture, texCoord);
-    float luminance = dot(c,grayScaleWeights); //calc luminance
-    
-    float heatCoord = luminance*heatAmount; //lookup heat based on luminance
-    vec4 col_out = texture1D(heatTexture, heatCoord);
-    col_out.a = 1.0;
-    gl_FragColor = col_out;
+void main(void) {
+    gl_FragColor = texture2D(inputTexture, vec2(vTextureCoord.s, vTextureCoord.t) - uTextureOffset);
+    //	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 
 )";

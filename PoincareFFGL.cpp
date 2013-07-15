@@ -70,7 +70,7 @@ DWORD PoincareFFGL::InitGL(const FFGLViewportStruct *vp)
     
   //initialize gl shader
   m_shader.SetExtensions(&m_extensions);
-  m_shader.Compile(vertexShaderCode,fragmentShaderCode);
+  m_shader.Compile(vertexShaderCode, mobiusFragmentShaderCode);
  
   //activate our shader
   m_shader.BindShader();
