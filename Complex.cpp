@@ -20,7 +20,7 @@ std::string Complex::toString() {
     return ss.str();
 };
 
-Complex Complex::transform(Mobius& mobius) const {
+Complex Complex::transform(const Mobius& mobius) const {
     return divide(add(multiply(mobius.a, *this), mobius.b), add(multiply(mobius.c, *this), mobius.d));
 };
 

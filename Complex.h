@@ -15,30 +15,30 @@
 #define PI 3.141592f
 
 
-namespace Accuracy {
+class Accuracy {
+public:
+    static constexpr float linearTolerance = 1E-6;
+    static constexpr float angularTolerance = 1E-2;
+    static constexpr float linearToleranceSquared = linearTolerance * linearTolerance;
+    static constexpr float maxLength = 100;
 
-    float linearTolerance = 1E-6;
-    float angularTolerance = 1E-2;
-    float linearToleranceSquared = linearTolerance * linearTolerance;
-    float maxLength = 100;
-
-    float lengthEquals(float a, float b) {
+    static float lengthEquals(float a, float b) {
         return fabs(a - b) < linearTolerance;
     };
 
-    float lengthIsZero(float a) {
+    static float lengthIsZero(float a) {
         return fabs(a) < linearTolerance;
     };
 
-    float angleEquals(float a, float b) {
+    static float angleEquals(float a, float b) {
         return fabs(a - b) < angularTolerance;
     };
 
-    float angleIsZero(float a) {
+    static float angleIsZero(float a) {
         return fabs(a) < angularTolerance;
     };
 
-}
+};
 
 class Mobius;
 
@@ -107,7 +107,7 @@ public:
         return scale(c.modulus());
     };
 
-    static bool equals(Complex& a, Complex& b) {
+    static bool equals(const Complex& a, const Complex& b) {
         return subtract(a, b).modulusSquared() < Accuracy::linearTolerance * Accuracy::linearTolerance;
     };
     
@@ -127,7 +127,7 @@ public:
         return Complex(-real, -imag);
     };
     
-    Complex transform(Mobius& mobius) const;
+    Complex transform(const Mobius& mobius) const;
     
     Complex conjugate() const {
         return Complex(real, -imag);
@@ -179,7 +179,7 @@ public:
         );
     }
 
-    Mobius scale(float s) {
+    Mobius scale(float s) const {
         return Mobius(
             a.scale(s),
             b.scale(s),
@@ -206,19 +206,19 @@ public:
         return Mobius(Complex::createPolar(1, phi), Complex::zero, Complex::zero, Complex::one);
     }
 
-    Mobius inverse() {
+    Mobius inverse() const {
         return Mobius(d, b.negative(), c.negative(), a);
     }
 
-    Mobius conjugate() {
+    Mobius conjugate() const {
         return Mobius(a.conjugate(), b.conjugate(), c.conjugate(), d.conjugate());
     }
 
-    Mobius transpose() {
+    Mobius transpose() const {
         return Mobius(a, c, b, d);
     }
 
-    Mobius conjugateTranspose() {
+    Mobius conjugateTranspose() const {
         return Mobius(a.conjugate(), c.conjugate(), b.conjugate(), d.conjugate());
     }
 };

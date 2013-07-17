@@ -22,6 +22,7 @@
 		5B0FCEB517950D76004E2E35 /* quat.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEAD17950D76004E2E35 /* quat.c */; };
 		5B0FCEB717950D76004E2E35 /* str.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEAF17950D76004E2E35 /* str.c */; };
 		5B0FCEB817950D76004E2E35 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEB017950D76004E2E35 /* vec3.c */; };
+		5B0FCEBB1795B5BF004E2E35 /* Circline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEB91795B5BF004E2E35 /* Circline.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		5B0FCEAD17950D76004E2E35 /* quat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = quat.c; sourceTree = "<group>"; };
 		5B0FCEAF17950D76004E2E35 /* str.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = str.c; sourceTree = "<group>"; };
 		5B0FCEB017950D76004E2E35 /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
+		5B0FCEB91795B5BF004E2E35 /* Circline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Circline.cpp; sourceTree = "<group>"; };
+		5B0FCEBA1795B5BF004E2E35 /* Circline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circline.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 		2DA285910AEE5D640030A4DD = {
 			isa = PBXGroup;
 			children = (
+				5B0FCEB91795B5BF004E2E35 /* Circline.cpp */,
+				5B0FCEBA1795B5BF004E2E35 /* Circline.h */,
 				5B0FCEA41794750B004E2E35 /* Complex.cpp */,
 				5B0FCEA51794750B004E2E35 /* Complex.h */,
 				5B0FCE911793DE3E004E2E35 /* shader_frag.glsl */,
@@ -232,6 +237,7 @@
 				5B0FCEB517950D76004E2E35 /* quat.c in Sources */,
 				5B0FCEB717950D76004E2E35 /* str.c in Sources */,
 				5B0FCEB817950D76004E2E35 /* vec3.c in Sources */,
+				5B0FCEBB1795B5BF004E2E35 /* Circline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
