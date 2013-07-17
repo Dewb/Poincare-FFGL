@@ -27,10 +27,10 @@ public:
         //}
     }
 
-    static Circline create(float a, Complex b, float c);
+    static std::shared_ptr<Circline> create(float a, Complex b, float c);
 
 
-    Circline transform(const Mobius& mobius) {
+    std::shared_ptr<Circline> transform(const Mobius& mobius) {
         Mobius inverse = mobius.inverse();
         //			Mobius hermitian = inverse.Transpose *
         //			new Mobius(new Complex(Circline.a, 0), Circline.b.Conjugate, Circline.b, new Complex(Circline.c, 0)) *
@@ -72,9 +72,12 @@ public:
         return isPointOnLeft(p1) ^ isPointOnLeft(p2);
     };
 
-    Circline conjugate() {
+    std::shared_ptr<Circline> conjugate() {
         return create(a, b.conjugate(), c);
     }
+    
+    virtual std::shared_ptr<Circline> inverse() = 0;
+    virtual Mobius asMobius() = 0;
     
 };
 
@@ -86,8 +89,8 @@ public:
     {
     }
 
-    static Circle create(const Complex& center, float radius) {
-        return Circle(1, center.negative(), center.modulusSquared() - radius * radius);
+    static std::shared_ptr<Circline> create(const Complex& center, float radius) {
+        return std::make_shared<Circle>(1, center.negative(), center.modulusSquared() - radius * radius);
     }
 
     static const Circle unit;
@@ -104,7 +107,7 @@ public:
         return sqrt(radiusSquared());
     }
 
-    virtual Circline inverse();
+    virtual std::shared_ptr<Circline> inverse();
 
     virtual Mobius asMobius() {
         return Mobius(center(),
@@ -113,11 +116,11 @@ public:
                       b.conjugate());
     }
 
-    Circle scale(const Complex& c) {
+    std::shared_ptr<Circline> scale(const Complex& c) {
         return scale(c.modulus());
     }
     
-    Circle scale(float s) {
+    std::shared_ptr<Circline> scale(float s) {
         return Circle::create(center().scale(s), radius() * s);
     }
 };
@@ -130,7 +133,7 @@ public:
     {
     }
 
-    static Line createTwoPoint(const Complex& p1, const Complex& p2) {
+    static std::shared_ptr<Line> createTwoPoint(const Complex& p1, const Complex& p2) {
         float dx = p2.real - p1.real;
         float dy = p2.imag - p1.imag;
     
@@ -138,17 +141,17 @@ public:
     }
 
     // Creates a linear Circle a * x + b * y + c = 0 from reals a, b, and c.
-    static Line createFromEquation(float a, float b, float c) {
-        return Line(Complex(a / 2.0, b / 2.0), c);
+    static std::shared_ptr<Line> createFromEquation(float a, float b, float c) {
+        return std::make_shared<Line>(Complex(a / 2.0, b / 2.0), c);
     }
 
-    static Line createPointAngle(const Complex& point, float angle) {
+    static std::shared_ptr<Line> createPointAngle(const Complex& point, float angle) {
         return Line::createTwoPoint(point, Complex::subtract(point, Complex::createPolar(1, angle)));
     }
 
-    virtual Circline inverse() {
+    virtual std::shared_ptr<Circline> inverse() {
         if (Accuracy::lengthIsZero(c)) {
-            return Line(b.conjugate(), 0);
+            return std::make_shared<Line>(b.conjugate(), 0);
         }
     
         return Circle::create(b.conjugate().scale(1 / c), b.modulus() / c);

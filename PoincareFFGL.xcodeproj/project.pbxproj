@@ -23,10 +23,10 @@
 		5B0FCEB717950D76004E2E35 /* str.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEAF17950D76004E2E35 /* str.c */; };
 		5B0FCEB817950D76004E2E35 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEB017950D76004E2E35 /* vec3.c */; };
 		5B0FCEBB1795B5BF004E2E35 /* Circline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCEB91795B5BF004E2E35 /* Circline.cpp */; };
+		5B12013A17965B8B00AB518D /* Face.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B12013817965B8B00AB518D /* Face.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D2190960AF02BD1007154B7 /* PoincareFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PoincareFFGL.bundle; path = "/Users/dewb/dev/poincare/Poincare-FFGL/bin/PoincareFFGL.bundle"; sourceTree = "<absolute>"; };
 		2D2190970AF02BD1007154B7 /* PoincareFFGL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PoincareFFGL-Info.plist"; sourceTree = "<group>"; };
 		2DA287A70AEEFE950030A4DD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		5B07B56D16F2ED7800AD1A46 /* FFGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFGL.h; sourceTree = "<group>"; };
@@ -61,6 +61,9 @@
 		5B0FCEB017950D76004E2E35 /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
 		5B0FCEB91795B5BF004E2E35 /* Circline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Circline.cpp; sourceTree = "<group>"; };
 		5B0FCEBA1795B5BF004E2E35 /* Circline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circline.h; sourceTree = "<group>"; };
+		5B1201351796283700AB518D /* PoincareFFGL_debug.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoincareFFGL_debug.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B12013817965B8B00AB518D /* Face.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Face.cpp; sourceTree = "<group>"; };
+		5B12013917965B8B00AB518D /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 		2DA285910AEE5D640030A4DD = {
 			isa = PBXGroup;
 			children = (
+				5B12013817965B8B00AB518D /* Face.cpp */,
+				5B12013917965B8B00AB518D /* Face.h */,
 				5B0FCEB91795B5BF004E2E35 /* Circline.cpp */,
 				5B0FCEBA1795B5BF004E2E35 /* Circline.h */,
 				5B0FCEA41794750B004E2E35 /* Complex.cpp */,
@@ -89,6 +94,7 @@
 				5B0FCEA717950D76004E2E35 /* gl-matrix */,
 				2DA287A70AEEFE950030A4DD /* OpenGL.framework */,
 				2D2190970AF02BD1007154B7 /* PoincareFFGL-Info.plist */,
+				5B1201351796283700AB518D /* PoincareFFGL_debug.bundle */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,7 +185,7 @@
 			);
 			name = PoincareFFGL;
 			productName = FFGLBrightness;
-			productReference = 2D2190960AF02BD1007154B7 /* PoincareFFGL.bundle */;
+			productReference = 5B1201351796283700AB518D /* PoincareFFGL_debug.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -238,6 +244,7 @@
 				5B0FCEB717950D76004E2E35 /* str.c in Sources */,
 				5B0FCEB817950D76004E2E35 /* vec3.c in Sources */,
 				5B0FCEBB1795B5BF004E2E35 /* Circline.cpp in Sources */,
+				5B12013A17965B8B00AB518D /* Face.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
